@@ -16,17 +16,6 @@
 #include <boost/filesystem.hpp>
 #include <boost/foreach.hpp>
 
-void getDirectories(const fs::path &path, std::vector<fs::path> &directories)
-{
-  BOOST_FOREACH(const fs::path& p, std::make_pair(fs::recursive_directory_iterator(path), fs::recursive_directory_iterator())) {
-    if (fs::is_directory(p)){ // 参照しているパスがディレクトリなら処理を行う
-      directories.push_back(p);  // 動的配列directoriesにディレクトリの絶対パスを追加
-    }
-  }
-  /*** ディレクトリ名が昇順になるようにソート ***/
-  std::sort(directories.begin(), directories.end());
-}
-
 int main(int argc, char *argv[]){
   using namespace std;
 
